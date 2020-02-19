@@ -1,9 +1,11 @@
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
-#include "asm.h"
+//#include "asm.h"
 
 #define BUFSIZE 32
 #define FLAGSIZE 64
@@ -17,7 +19,7 @@ void win() {
   }
 
   fgets(buf,FLAGSIZE,f);
-  printf(buf);
+  printf("%s\n", buf);
 }
 
 void vuln(){
@@ -39,3 +41,6 @@ int main(int argc, char **argv){
   return 0;
 }
 
+//0x080485cb
+//40 is bytes are reserved for the local variables of vuln function.
+//https://dhavalkapil.com/blogs/Buffer-Overflow-Exploit/
